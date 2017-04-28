@@ -28,9 +28,7 @@ class ToDoClass {
     }
 
     loadTasks() {
-        let tasksHtml = this.tasks.reduce(function (html, task, index) {
-            return html += this.generateTaskHtml(task, index);
-        }.bind(this), '');
+        let tasksHtml = this.tasks.reduce((html, task, index) => html += this.generateTaskHtml(task, index), '');
         document.getElementById('taskList').innerHTML = tasksHtml;
     }
 }
