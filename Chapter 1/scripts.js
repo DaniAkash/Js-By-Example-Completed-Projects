@@ -9,6 +9,17 @@ class ToDoClass {
         this.loadTasks();
     }
 
+    toggleTaskStatus(index) {
+        this.tasks[index].isComplete = !this.tasks[index].isComplete;
+        this.loadTasks();
+    }
+
+    deleteTask(event, taskIndex) {
+        event.preventDefault();
+        this.tasks.splice(taskIndex, 1);
+        this.loadTasks();
+    }
+
     generateTaskHtml(task, index) {
         return `
             <li class="list-group-item checkbox">
