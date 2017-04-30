@@ -7,6 +7,16 @@ class ToDoClass {
       ];
 
       this.loadTasks();
+      this.addEventListeners();
+    }
+
+    addEventListeners() {
+      document.getElementById('addTask').addEventListener("keypress", event => {
+        if(event.keyCode === 13) {
+          this.addTask(event.target.value);
+          event.target.value = "";
+        }
+      });
     }
 
     addTaskClick() {
