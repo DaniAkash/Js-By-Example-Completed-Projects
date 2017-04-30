@@ -11,6 +11,8 @@ class ToDoClass {
     }
 
     addEventListeners() {
+
+      // Add Task
       document.getElementById('addTask').addEventListener("keypress", event => {
         if(event.keyCode === 13) {
           this.addTask(event.target.value);
