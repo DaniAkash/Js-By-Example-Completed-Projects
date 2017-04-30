@@ -1,10 +1,13 @@
 class ToDoClass {
     constructor() {
-      this.tasks = [
-        {task: 'Go to Dentist', isComplete: false},
-        {task: 'Do Gardening', isComplete: true},
-        {task: 'Renew Library Account', isComplete: false},
-      ];
+      this.tasks = JSON.parse(localStorage.getItem('TASKS'));
+      if(!this.tasks) {
+        this.tasks = [
+          {task: 'Go to Dentist', isComplete: false},
+          {task: 'Do Gardening', isComplete: true},
+          {task: 'Renew Library Account', isComplete: false},
+        ];
+      }
 
       this.loadTasks();
       this.addEventListeners();
@@ -72,6 +75,7 @@ class ToDoClass {
     }
 
     loadTasks() {
+      localStorage.setItem('TASKS', JSON.stringify(this.tasks));
       let tasksHtml = this.tasks.reduce((html, task, index) => html += this.generateTaskHtml(task, index), '');
       document.getElementById('taskList').innerHTML = tasksHtml;
     }
