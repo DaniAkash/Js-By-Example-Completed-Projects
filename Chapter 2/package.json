@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack src/js/memes.js --output-filename dist/js/memes.js"
   },
   "author": "Dani Akash S",
   "license": "ISC",
