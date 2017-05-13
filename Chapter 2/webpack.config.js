@@ -23,8 +23,16 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        test: /\.(svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: 'fonts/[name].[ext]'
+        }
+      },
+      {
+        test: /\.(less|css)$/,
+        use: [ 'style-loader', 'css-loader', 'less-loader' ]
       },
     ],
   },
