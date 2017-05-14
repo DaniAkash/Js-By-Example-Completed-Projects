@@ -2,8 +2,12 @@ require('dotenv').config()
 const webpack = require('webpack');
 const glob = require('glob');
 const PurifyCSSPlugin = require('purifycss-webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const isProduction = (process.env.NODE_ENV === 'production');
+const extractLess = new ExtractTextPlugin({
+    filename: "[name].css",
+});
 
 module.exports = {
   context: __dirname,
@@ -56,23 +60,23 @@ module.exports = {
       },
       {
         test: /\.(less|css)$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true
+        use: extractLess.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'less-loader',
+              options: {
+                sourceMap: true
+              }
             }
-          },
-          {
-            loader: "less-loader",
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
+          ],
+          fallback: 'style-loader',
+        })
       },
     ],
   },
@@ -87,6 +91,7 @@ module.exports = {
       API_KEY: JSON.stringify(process.env.API_KEY),
       API_SECRET: JSON.stringify(process.env.API_SECRET),
     }),
+    extractLess,
     new PurifyCSSPlugin({
       paths: glob.sync(__dirname + '/*.html'),
       minimize: true,
