@@ -51,10 +51,27 @@ module.exports = {
       },
       {
         test: /\.(less|css)$/,
-        use: [ 'style-loader', 'css-loader', 'less-loader' ]
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: "less-loader",
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       },
     ],
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
