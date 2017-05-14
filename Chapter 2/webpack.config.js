@@ -81,6 +81,10 @@ module.exports = {
       $: 'jquery',
       jquery: 'jquery'
     }),
+    new webpack.DefinePlugin({
+      API_KEY: JSON.stringify(process.env.API_KEY),
+      API_SECRET: JSON.stringify(process.env.API_SECRET),
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ],
 }
