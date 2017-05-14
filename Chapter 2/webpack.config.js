@@ -88,3 +88,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
   ],
 }
+
+if(isProduction) {
+  module.exports.plugins.push(
+    new webpack.optimize.UglifyJsPlugin()
+  );
+}
