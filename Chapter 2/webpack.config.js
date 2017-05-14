@@ -9,6 +9,12 @@ module.exports = {
   output: {
       path: __dirname + "/dist",
       filename: '[name].js',
+      publicPath: '/dist/',
+  },
+  devServer: {
+    compress: true,
+    port: 8080,
+    hot: true,
   },
   module: {
     rules: [
@@ -31,6 +37,19 @@ module.exports = {
         }
       },
       {
+        test: /\.(png|jpg|gif)$/,
+        loaders: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: 'images/[name].[ext]'
+            }
+          },
+          'img-loader'
+        ],
+      },
+      {
         test: /\.(less|css)$/,
         use: [ 'style-loader', 'css-loader', 'less-loader' ]
       },
@@ -42,5 +61,6 @@ module.exports = {
       $: 'jquery',
       jquery: 'jquery'
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 }
