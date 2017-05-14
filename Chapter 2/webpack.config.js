@@ -1,5 +1,7 @@
 require('dotenv').config()
 const webpack = require('webpack');
+const glob = require('glob');
+const PurifyCSSPlugin = require('purifycss-webpack');
 
 const isProduction = (process.env.NODE_ENV === 'production');
 
@@ -84,6 +86,10 @@ module.exports = {
     new webpack.DefinePlugin({
       API_KEY: JSON.stringify(process.env.API_KEY),
       API_SECRET: JSON.stringify(process.env.API_SECRET),
+    }),
+    new PurifyCSSPlugin({
+      paths: glob.sync(__dirname + '/*.html'),
+      minimize: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
