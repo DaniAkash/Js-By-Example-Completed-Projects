@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const glob = require('glob');
 const PurifyCSSPlugin = require('purifycss-webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 /**
  * flag Used to check if the environment is production or not
@@ -20,6 +21,19 @@ const fileNamePrefix = isProduction? '[chunkhash].' : '';
 const extractLess = new ExtractTextPlugin({
     filename: fileNamePrefix + "[name].css",
 });
+
+/**
+ * Options to clean dist folder
+ */
+const pathsToClean = [
+  'dist'
+];
+const cleanOptions = {
+  root: __dirname,
+  verbose: true,
+  dry: false,
+  exclude: [],
+};
 
 module.exports = {
   context: __dirname,
@@ -127,7 +141,7 @@ if(!isProduction) {
 if(isProduction) {
   module.exports.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
+      sourceMap: true // use false if you want to disable source maps in production
     }),
     function() { // Create a manifest.json file that contain the hashed file names of generated static resources
       this.plugin("done", function(status) {
@@ -136,6 +150,7 @@ if(isProduction) {
           JSON.stringify(status.toJson().assetsByChunkName)
         );
       });
-    }
+    },
+    new CleanWebpackPlugin(pathsToClean, cleanOptions)
   );
 }
