@@ -1,3 +1,10 @@
+/**
+ * Environment variables used in this configuration:
+ * NODE_ENV
+ * API_KEY
+ * API_SECRET
+ */
+
 require('dotenv').config()
 const webpack = require('webpack');
 const glob = require('glob');
@@ -113,7 +120,7 @@ module.exports = {
       $: 'jquery',
       jquery: 'jquery'
     }),
-    new webpack.DefinePlugin({
+    new webpack.DefinePlugin({ // Remove this plugin if you don't plan to define any global constants
       API_KEY: JSON.stringify(process.env.API_KEY),
       API_SECRET: JSON.stringify(process.env.API_SECRET),
     }),
