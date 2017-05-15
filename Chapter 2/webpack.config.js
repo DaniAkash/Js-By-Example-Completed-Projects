@@ -126,7 +126,9 @@ if(!isProduction) {
  */
 if(isProduction) {
   module.exports.plugins.push(
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true
+    }),
     function() { // Create a manifest.json file that contain the hashed file names of generated static resources
       this.plugin("done", function(status) {
         require("fs").writeFileSync(
