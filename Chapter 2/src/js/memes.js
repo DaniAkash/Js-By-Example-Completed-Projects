@@ -27,8 +27,10 @@ class Memes {
   }
 
   addEventListeners() {
-    this.$topTextInput.addEventListener('keyup', this.createMeme);
-    this.$bottomTextInput.addEventListener('keyup', this.createMeme);
+    let inputNodes = [this.$topTextInput, this.$bottomTextInput, this.$imageInput];
+
+    inputNodes.forEach(element => element.addEventListener('keyup', this.createMeme));
+    inputNodes.forEach(element => element.addEventListener('change', this.createMeme));
   }
 
 }
