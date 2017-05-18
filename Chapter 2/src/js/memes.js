@@ -23,10 +23,15 @@ class Memes {
   }
 
   createMeme() {
-    console.log('rendered');
+    let context = this.$canvas.getContext('2d');
+
+    if (this.$imageInput.files && this.$imageInput.files[0]) {
+      console.log('cool');
+    }
   }
 
   addEventListeners() {
+    this.createMeme = this.createMeme.bind(this);
     let inputNodes = [this.$topTextInput, this.$bottomTextInput, this.$imageInput];
 
     inputNodes.forEach(element => element.addEventListener('keyup', this.createMeme));
