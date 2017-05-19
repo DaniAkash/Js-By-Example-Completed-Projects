@@ -32,8 +32,8 @@ class Memes {
         let image = new Image();
 
         image.onload = () => {
-          // this.$canvas.height = image.height;
-          // this.$canvas.width = image.width;
+          this.$canvas.height = image.height;
+          this.$canvas.width = image.width;
           // context.clearRect(0, 0, this.$canvas.height, this.$canvasWidth);
           // context.drawImage(image,0,0);
 
@@ -54,7 +54,6 @@ class Memes {
         };
 
         image.src = reader.result;
-
       };
 
       reader.readAsDataURL(this.$imageInput.files[0]);
