@@ -46,27 +46,27 @@ class Memes {
           /**
            * Fix lines over M
            */
-          // context.lineJoin = 'round';
+          context.lineJoin = 'round';
 
           /**
            * Stroke Text
            */
-          // context.lineWidth  = fontSize/5;
-          // context.strokeStyle = 'black';
+          context.lineWidth  = fontSize/5;
+          context.strokeStyle = 'black';
 
           /**
            * Fill Text
            */
-          // context.fillStyle = 'white';
+          context.fillStyle = 'white';
 
-          // let topText = this.$topTextInput.value.toUpperCase();
-          // let bottomText = this.$bottomTextInput.value.toUpperCase();
+          const topText = this.$topTextInput.value.toUpperCase();
+          const bottomText = this.$bottomTextInput.value.toUpperCase();
 
-          // context.strokeText(topText, this.$canvas.width/2, this.$canvas.height*(5/100));
-          // context.fillText(topText, this.$canvas.width/2, this.$canvas.height*(5/100));
+          context.strokeText(topText, this.$canvas.width/2, this.$canvas.height*(5/100));
+          context.fillText(topText, this.$canvas.width/2, this.$canvas.height*(5/100));
 
-          // context.strokeText(bottomText, this.$canvas.width/2, this.$canvas.height*(90/100));
-          // context.fillText(bottomText, this.$canvas.width/2, this.$canvas.height*(90/100));
+          context.strokeText(bottomText, this.$canvas.width/2, this.$canvas.height*(90/100));
+          context.fillText(bottomText, this.$canvas.width/2, this.$canvas.height*(90/100));
         };
 
         image.src = reader.result;
