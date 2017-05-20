@@ -78,10 +78,31 @@ class Memes {
 
   addEventListeners() {
     this.createMeme = this.createMeme.bind(this);
+    this.downloadMeme = this.downloadMeme.bind(this);
     let inputNodes = [this.$topTextInput, this.$bottomTextInput, this.$imageInput];
 
     inputNodes.forEach(element => element.addEventListener('keyup', this.createMeme));
     inputNodes.forEach(element => element.addEventListener('change', this.createMeme));
+    this.$downloadButton.addEventListener('click', this.downloadMeme);
+  }
+
+  downloadMeme() {
+    if(!this.$imageInput.files[0]) {
+      this.$imageInput.parentElement.classList.add('has-error');
+      return;
+    }
+    if(this.$bottomTextInput.value === '') {
+      this.$imageInput.parentElement.classList.remove('has-error');
+      this.$bottomTextInput.parentElement.classList.add('has-error');
+      return;
+    }
+    this.$imageInput.parentElement.classList.remove('has-error');
+    this.$bottomTextInput.parentElement.classList.remove('has-error');
+
+    const imageSource = this.$canvas.toDataURL('image/png');
+    const att = document.createAttribute('href');
+    att.value = imageSource.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+    this.$downloadButton.setAttributeNode(att);
   }
 
 }
