@@ -34,8 +34,9 @@ class Memes {
         image.onload = () => {
           this.$canvas.height = image.height;
           this.$canvas.width = image.width;
-          // context.clearRect(0, 0, this.$canvas.height, this.$canvasWidth);
-          // context.drawImage(image,0,0);
+
+          context.clearRect(0, 0, this.$canvas.height, this.$canvas.width);
+          context.drawImage(image,0,0);
 
           // let fontSize = ((this.$canvas.width+this.$canvas.height)/2)*4/100;
           // context.lineWidth  = fontSize/5;
