@@ -67,12 +67,27 @@ class Memes {
 
           context.strokeText(bottomText, this.$canvas.width/2, this.$canvas.height*(90/100));
           context.fillText(bottomText, this.$canvas.width/2, this.$canvas.height*(90/100));
+
+          this.resizeCanvas(this.$canvas.height, this.$canvas.width);
         };
 
         image.src = reader.result;
       };
 
       reader.readAsDataURL(this.$imageInput.files[0]);
+    }
+  }
+
+  resizeCanvas(canvasHeight, canvasWidth) {
+    let height = canvasHeight;
+    let width = canvasWidth;
+    this.$canvas.style.height = `${height}px`;
+    this.$canvas.style.width = `${width}px`;
+    while(height > Math.min(1000, deviceWidth-30) && width > Math.min(1000, deviceWidth-30)) {
+      height /= 2;
+      width /= 2;
+      this.$canvas.style.height = `${height}px`;
+      this.$canvas.style.width = `${width}px`;
     }
   }
 
