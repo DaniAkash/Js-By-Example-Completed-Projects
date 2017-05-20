@@ -38,20 +38,35 @@ class Memes {
           context.clearRect(0, 0, this.$canvas.height, this.$canvas.width);
           context.drawImage(image,0,0);
 
-          // let fontSize = ((this.$canvas.width+this.$canvas.height)/2)*4/100;
-          // context.lineWidth  = fontSize/5;
-          // context.font = `${fontSize}pt sans-serif`;
-          // context.strokeStyle = 'black';
-          // context.fillStyle = 'white';
-          // context.lineJoin = 'round';
-          // context.textAlign = 'center';
-          // context.textBaseline = 'top';
+          let fontSize = ((this.$canvas.width+this.$canvas.height)/2)*4/100;
+          context.font = `${fontSize}pt sans-serif`;
+          context.textAlign = 'center';
+          context.textBaseline = 'top';
 
-          // context.strokeText(this.$topTextInput.value.toUpperCase(), this.$canvas.width/2, this.$canvas.height*(5/100));
-          // context.fillText(this.$topTextInput.value.toUpperCase(), this.$canvas.width/2, this.$canvas.height*(5/100));
+          /**
+           * Fix lines over M
+           */
+          context.lineJoin = 'round';
 
-          // context.strokeText(this.$bottomTextInput.value.toUpperCase(), this.$canvas.width/2, this.$canvas.height*(90/100));
-          // context.fillText(this.$bottomTextInput.value.toUpperCase(), this.$canvas.width/2, this.$canvas.height*(90/100));
+          /**
+           * Stroke Text
+           */
+          context.lineWidth  = fontSize/5;
+          context.strokeStyle = 'black';
+
+          /**
+           * Fill Text
+           */
+          context.fillStyle = 'white';
+
+          let topText = this.$topTextInput.value.toUpperCase();
+          let bottomText = this.$bottomTextInput.value.toUpperCase();
+
+          context.strokeText(topText, this.$canvas.width/2, this.$canvas.height*(5/100));
+          context.fillText(topText, this.$canvas.width/2, this.$canvas.height*(5/100));
+
+          context.strokeText(bottomText, this.$canvas.width/2, this.$canvas.height*(90/100));
+          context.fillText(bottomText, this.$canvas.width/2, this.$canvas.height*(90/100));
         };
 
         image.src = reader.result;
