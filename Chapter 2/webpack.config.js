@@ -1,8 +1,7 @@
 /**
  * Environment variables used in this configuration:
  * NODE_ENV
- * API_KEY
- * API_SECRET
+ * CONSTANT_VALUE
  */
 
 require('dotenv').config()
@@ -121,8 +120,8 @@ module.exports = {
       jquery: 'jquery'
     }),
     new webpack.DefinePlugin({ // Remove this plugin if you don't plan to define any global constants
-      API_KEY: JSON.stringify(process.env.API_KEY),
-      API_SECRET: JSON.stringify(process.env.API_SECRET),
+      ENVIRONMENT: JSON.stringify(process.env.NODE_ENV),
+      CONSTANT_VALUE: JSON.stringify(process.env.CONSTANT_VALUE),
     }),
     extractLess, // Make sure ExtractTextPlugin instance is included in array before the PurifyCSSPlugin
     new PurifyCSSPlugin({
