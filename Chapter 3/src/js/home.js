@@ -18,8 +18,22 @@ class Home {
     });
   }
 
+  getFormValues() {
+    return {
+      username: this.$username.value,
+      email: this.$email.value,
+      phone: this.$phone.value,
+      age: this.$age.value,
+      profession: this.$profession.value,
+      experience: this.$experience.value,
+      comment: this.$comment.value,
+    };
+  }
+
   onFormSubmit(event) {
     event.preventDefault();
+
+    const formValues = this.getFormValues();
   }
 
 
