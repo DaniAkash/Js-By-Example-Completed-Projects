@@ -12,6 +12,14 @@ class Home {
     this.$comment = document.querySelector('#comment');
     this.$submit = document.querySelector('#submit');
     this.$loadingIndicator = document.querySelector('#loadingIndicator');
+
+    this.$form.addEventListener('submit', event => {
+      this.onFormSubmit(event);
+    });
+  }
+
+  onFormSubmit(event) {
+    event.preventDefault();
   }
 
 
