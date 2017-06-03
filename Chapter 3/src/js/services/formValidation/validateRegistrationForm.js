@@ -15,3 +15,12 @@ function validatePhone(phone) {
   const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   return phoneRegex.test(phone);
 }
+
+function validateAge(age) {
+  return age >= 10 && age <= 25;
+}
+
+function validateProfession(profession) {
+  const acceptedValues = ['school','college','trainee','employee'];
+  return acceptedValues.indexOf(profession) > -1;
+}
