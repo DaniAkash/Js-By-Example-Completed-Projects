@@ -1,5 +1,14 @@
 export default function validateRegistrationForm(formValues) {
 
+  const result = {
+    username: validateUserName(formValues.username),
+    email: validateEmail(formValues.email),
+    phone: validatePhone(formValues.phone),
+    age: validateAge(formValues.age),
+    profession: validateProfession(formValues.profession),
+    experience: validateExperience(formValues.experience),
+  };
+
 }
 
 function validateUserName(name) {
