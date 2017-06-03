@@ -24,3 +24,7 @@ function validateProfession(profession) {
   const acceptedValues = ['school','college','trainee','employee'];
   return acceptedValues.indexOf(profession) > -1;
 }
+
+function validateExperience(experience) {
+  return experience > 0 && experience < 4;
+}
