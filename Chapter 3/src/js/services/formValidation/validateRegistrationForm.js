@@ -9,6 +9,16 @@ export default function validateRegistrationForm(formValues) {
     experience: validateExperience(formValues.experience),
   };
 
+  let field, isValid = true;
+  for(field in result) {
+    isValid = isValid && result[field];
+  }
+
+  return {
+    isValid,
+    result,
+  };
+
 }
 
 function validateUserName(name) {
