@@ -22,9 +22,9 @@ export default function apiCall(route, body = {}, method='GET') {
       }
 
       fetch(`${SERVER_URL}/${route}`, requestDetails)
-        .then(response => handleErrors(response))
-        .then(data => resolve(data))
-        .catch(err => reject(err));
+        .then(handleErrors)
+        .then(resolve)
+        .catch(reject);
 
     });
 }
