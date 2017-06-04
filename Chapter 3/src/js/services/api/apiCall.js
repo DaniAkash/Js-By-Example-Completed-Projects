@@ -13,5 +13,18 @@ export default function apiCall(route, body = {}, method='GET') {
 
       if(method !== 'GET') requestDetails.body = JSON.stringify(body);
 
+      function handleErrors(response) {
+        if(response.ok) {
+          return response.json();
+        } else {
+          throw Error(response.statusText);
+        }
+      }
+
+      fetch(`${SERVER_URL}/${route}`, requestDetails)
+        .then(response => handleErrors(response))
+        .then(data => resolve(data))
+        .catch(err => reject(err));
+
     });
 }
