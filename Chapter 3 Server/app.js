@@ -14,8 +14,8 @@ app.set('port', 3000);
 app.post('/registration', (req, res, next) => {
   let each;
   for(each in req.body) {
-    if(!req.body[each]) {
-      res.status(400);
+    if(!req.body[each] && each !== 'comment') {
+      res.status(400).json({});
       return next();
     }
   }
