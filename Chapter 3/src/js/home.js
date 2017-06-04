@@ -1,4 +1,5 @@
 import './general';
+import validateRegistrationForm from './services/formValidation/validateRegistrationForm';
 
 class Home {
   constructor() {
@@ -34,8 +35,50 @@ class Home {
     event.preventDefault();
 
     const formValues = this.getFormValues();
+    const formStatus = validateRegistrationForm(formValues);
+
+    if(formStatus.isValid) {
+      this.clearErrors();
+      this.submitForm(formValues);
+    } else {
+      this.clearErrors();
+      this.highlightErrors(formStatus.result);
+    }
   }
 
+  submitForm(formValues) {
+
+  }
+
+  highlightErrors(result) {
+    if(!result.username) {
+      this.$username.parentElement.classList.add('has-error');
+    }
+    if(!result.phone) {
+      this.$phone.parentElement.classList.add('has-error');
+    }
+    if(!result.email) {
+      this.$email.parentElement.classList.add('has-error');
+    }
+    if(!result.age) {
+      this.$age.parentElement.classList.add('has-error');
+    }
+    if(!result.profession) {
+      this.$profession.parentElement.classList.add('has-error');
+    }
+    if(!result.experience) {
+      this.$experience.parentElement.classList.add('has-error');
+    }
+  }
+
+  clearErrors() {
+    this.$username.parentElement.classList.remove('has-error');
+    this.$phone.parentElement.classList.remove('has-error');
+    this.$email.parentElement.classList.remove('has-error');
+    this.$age.parentElement.classList.remove('has-error');
+    this.$profession.parentElement.classList.remove('has-error');
+    this.$experience.parentElement.classList.remove('has-error');
+  }
 
 }
 
