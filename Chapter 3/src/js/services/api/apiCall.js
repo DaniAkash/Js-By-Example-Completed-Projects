@@ -1,3 +1,5 @@
+const timeoutDuration = 5000;
+
 export default function apiCall(route, body = {}, method='GET') {
     const request = new Promise((resolve, reject) => {
 
@@ -26,5 +28,9 @@ export default function apiCall(route, body = {}, method='GET') {
         .then(resolve)
         .catch(reject);
 
+    });
+
+    const timeout = new Promise((request, reject) => {
+      setTimeout(reject, timeoutDuration, `Request timed out!`);
     });
 }
