@@ -33,4 +33,10 @@ export default function apiCall(route, body = {}, method='GET') {
     const timeout = new Promise((request, reject) => {
       setTimeout(reject, timeoutDuration, `Request timed out!`);
     });
+
+    return new Promise((resolve, reject) => {
+      Promise.race([request, timeout])
+        .then(resolve)
+        .catch(reject);
+    });
 }
