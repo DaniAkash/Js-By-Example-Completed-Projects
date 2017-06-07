@@ -1,6 +1,8 @@
 import './general';
 import apiCall from './services/api/apiCall';
 
+import Chart from 'chart.js';
+
 class Status {
   constructor() {
     this.$experienceTab = document.querySelector('#experienceTab');
