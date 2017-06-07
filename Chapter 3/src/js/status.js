@@ -18,3 +18,7 @@ class Status {
   }
 
 }
+
+window.addEventListener("load", () => {
+  new Status();
+});
