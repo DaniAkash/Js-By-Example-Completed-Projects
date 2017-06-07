@@ -31,11 +31,99 @@ class Status {
         this.$loadingIndicator.classList.add('hidden');
         this.$tabArea.classList.remove('hidden');
         this.$chartArea.classList.remove('hidden');
+
+        this.loadAge();
+        this.loadExperience();
+        this.loadProfession();
       })
       .catch(() => {
         this.$loadingIndicator.classList.add('hidden');
         this.$errorMessage.classList.remove('hidden');
       });
+  }
+
+  loadExperience() {
+    const data = {
+        datasets: [{
+            data: this.statisticData.experience,
+            backgroundColor:[
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
+            ],
+            borderColor: [
+              'white',
+              'white',
+              'white',
+            ]
+        }],
+        labels: [
+            'Beginner',
+            'Intermediate',
+            'Advanced'
+        ]
+    };
+    new Chart(this.$experienceCanvas,{
+      type: 'pie',
+      data,
+    });
+  }
+
+  loadProfession() {
+    const data = {
+        datasets: [{
+            data: this.statisticData.profession,
+            backgroundColor:[
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
+              'rgba(75, 192, 192, 0.6)',
+            ],
+            borderColor: [
+              'white',
+              'white',
+              'white',
+              'white',
+            ]
+        }],
+        labels: [
+            'School Students',
+            'College Students',
+            'Trainees',
+            'Employees'
+        ]
+    };
+    new Chart(this.$professionCanvas,{
+      type: 'pie',
+      data,
+    });
+  }
+
+  loadAge() {
+    const data = {
+        datasets: [{
+            data: this.statisticData.age,
+            backgroundColor:[
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
+            ],
+            borderColor: [
+              'white',
+              'white',
+              'white',
+            ]
+        }],
+        labels: [
+            '10-15 years',
+            '15-20 years',
+            '20-25 years'
+        ]
+    };
+    new Chart(this.$ageCanvas,{
+      type: 'pie',
+      data,
+    });
   }
 
 }
