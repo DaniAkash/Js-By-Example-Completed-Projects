@@ -1,4 +1,5 @@
 import './general';
+import apiCall from './services/api/apiCall';
 
 class Status {
   constructor() {
@@ -14,7 +15,25 @@ class Status {
     this.$tabArea = document.querySelector('#tabArea');
     this.$chartArea = document.querySelector('#chartArea');
 
+    this.$errorMessage = document.querySelector('#loadingError');
+
     this.statisticData;
+    this.loadData();
+  }
+
+  loadData() {
+    apiCall('statistics')
+      .then(response => {
+        this.statisticData = response;
+
+        this.$loadingIndicator.classList.add('hidden');
+        this.$tabArea.classList.remove('hidden');
+        this.$chartArea.classList.remove('hidden');
+      })
+      .catch(() => {
+        this.$loadingIndicator.classList.add('hidden');
+        this.$errorMessage.classList.remove('hidden');
+      });
   }
 
 }
