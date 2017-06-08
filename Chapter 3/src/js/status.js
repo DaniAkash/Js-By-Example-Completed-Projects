@@ -21,6 +21,7 @@ class Status {
 
     this.statisticData;
     this.loadData();
+    this.addEventListeners();
   }
 
   loadData() {
@@ -49,6 +50,12 @@ class Status {
     this.$ageCanvas.classList.add('hidden');
     this.$professionCanvas.classList.add('hidden');
     this.$experienceCanvas.classList.add('hidden');
+  }
+
+  addEventListeners() {
+    this.$experienceTab.addEventListener('click', this.loadExperience.bind(this));
+    this.$professionTab.addEventListener('click', this.loadProfession.bind(this));
+    this.$ageTab.addEventListener('click', this.loadAge.bind(this));
   }
 
   loadExperience() {
