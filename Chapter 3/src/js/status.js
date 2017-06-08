@@ -33,9 +33,7 @@ class Status {
         this.$tabArea.classList.remove('hidden');
         this.$chartArea.classList.remove('hidden');
 
-        this.loadAge();
         this.loadExperience();
-        this.loadProfession();
       })
       .catch(() => {
         this.$loadingIndicator.classList.add('hidden');
@@ -58,7 +56,11 @@ class Status {
     this.$ageTab.addEventListener('click', this.loadAge.bind(this));
   }
 
-  loadExperience() {
+  loadExperience(event = null) {
+    if(event) event.preventDefault();
+    this.hideCharts();
+    this.$experienceCanvas.classList.remove('hidden');
+    this.$experienceTab.parentElement.classList.add('active');
     const data = {
         datasets: [{
             data: this.statisticData.experience,
