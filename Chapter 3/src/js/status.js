@@ -42,6 +42,15 @@ class Status {
       });
   }
 
+  hideCharts() {
+    this.$experienceTab.parentElement.classList.remove('active');
+    this.$professionTab.parentElement.classList.remove('active');
+    this.$ageTab.parentElement.classList.remove('active');
+    this.$ageCanvas.classList.add('hidden');
+    this.$professionCanvas.classList.add('hidden');
+    this.$experienceCanvas.classList.add('hidden');
+  }
+
   loadExperience() {
     const data = {
         datasets: [{
