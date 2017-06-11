@@ -87,7 +87,11 @@ class Status {
     });
   }
 
-  loadProfession() {
+  loadProfession(event = null) {
+    if(event) event.preventDefault();
+    this.hideCharts();
+    this.$professionCanvas.classList.remove('hidden');
+    this.$professionTab.parentElement.classList.add('active');
     const data = {
         datasets: [{
             data: this.statisticData.profession,
@@ -117,7 +121,11 @@ class Status {
     });
   }
 
-  loadAge() {
+  loadAge(event = null) {
+    if(event) event.preventDefault();
+    this.hideCharts();
+    this.$ageCanvas.classList.remove('hidden');
+    this.$ageTab.parentElement.classList.add('active');
     const data = {
         datasets: [{
             data: this.statisticData.age,
