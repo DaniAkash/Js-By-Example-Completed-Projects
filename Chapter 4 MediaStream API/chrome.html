@@ -1,0 +1,10 @@
+<video></video>
+<script>
+const $video = document.querySelector('video');
+if (navigator.getUserMedia) {
+  navigator.getUserMedia({audio: true, video: true},
+    stream => $video.src = window.URL.createObjectURL(stream),
+    error => console.error(error)
+  );
+}
+</script>
