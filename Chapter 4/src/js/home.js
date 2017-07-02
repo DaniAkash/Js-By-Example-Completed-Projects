@@ -1,5 +1,12 @@
 import './general';
-import webrtc from 'simplewebrtc';
+import SimpleWebRTC from 'simplewebrtc';
+
+const webrtc = new SimpleWebRTC({
+  localVideoEl: 'localVideo',
+  remoteVideosEl: '',
+  autoRequestMedia: true,
+  debug: false,
+});
 
 class Home {
   constructor() {
