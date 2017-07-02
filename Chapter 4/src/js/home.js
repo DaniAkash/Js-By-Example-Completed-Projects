@@ -25,6 +25,12 @@ class Home {
 
     this.$remotes = document.querySelector('.video-area');
     this.$localVideo = document.querySelector('#localVideo');
+
+    this.registerClicks();
+  }
+
+  registerClicks() {
+
   }
 
 }
