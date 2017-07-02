@@ -31,6 +31,24 @@ class Home {
 
   registerClicks() {
 
+    /**
+     * Create Room
+     */
+    this.$createRoomButton.onclick = () => {
+      this.roomName = this.$roomNameInput.value.toLowerCase().replace(/\s/g, '-').replace(/[^A-Za-z0-9_\-]/g, '');
+      if(this.roomName) {
+        webrtc.createRoom(this.roomName, (err, name) => {
+          if(!err) {
+            const newUrl = location.pathname + '?' + name;
+            history.replaceState({}, '', newUrl);
+            this.roomCreated(name);
+          } else {
+
+          }
+        });
+      }
+    };
+
   }
 
 }
