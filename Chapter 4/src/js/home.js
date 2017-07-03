@@ -50,6 +50,30 @@ class Home {
       }
     };
 
+    this.$copy.onclick = () => {
+      this.copyUrl();
+    };
+
+    this.$copied.onclick = () => {
+      this.copyUrl();
+    };
+
+  }
+
+  copyUrl() {
+    const range = document.createRange();
+    range.selectNode(this.$roomUrl);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    try {
+      const successful = document.execCommand('copy');
+      const msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Copying text command was ' + msg);
+      this.$copy.classList.add('hidden');
+      this.$copied.classList.remove('hidden');
+    } catch(err) {
+      console.error(err);
+    }
   }
 
   roomCreated(room) {
