@@ -51,6 +51,13 @@ class Home {
 
   }
 
+  roomCreated(room) {
+    this.$infoSection.classList.remove('hidden');
+    this.$createRoomSection.classList.add('hidden');
+    this.$roomName.textContent = `Room Name: ${room}`;
+    this.$roomUrl.textContent = window.location.href;
+  }
+
 }
 
 const home = new Home();
