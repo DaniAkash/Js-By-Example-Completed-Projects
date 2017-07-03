@@ -74,6 +74,7 @@ class Home {
     } catch(err) {
       console.error(err);
     }
+    window.getSelection().removeAllRanges();
   }
 
   roomCreated(room) {
