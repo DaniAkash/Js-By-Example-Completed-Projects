@@ -27,6 +27,7 @@ class Home {
     this.$localVideo = document.querySelector('#localVideo');
 
     this.registerClicks();
+    this.addEventListeners();
   }
 
   registerClicks() {
@@ -43,7 +44,7 @@ class Home {
             history.replaceState({}, '', newUrl);
             this.roomCreated(name);
           } else {
-
+            console.error(err);
           }
         });
       }
@@ -56,6 +57,17 @@ class Home {
     this.$createRoomSection.classList.add('hidden');
     this.$roomName.textContent = `Room Name: ${room}`;
     this.$roomUrl.textContent = window.location.href;
+  }
+
+  addEventListeners() {
+    this.$buttonArea.addEventListener('mouseenter', () => {
+      this.$copy.classList.remove('hidden');
+    });
+
+    this.$buttonArea.addEventListener('mouseout', (event) => {
+      this.$copy.classList.add('hidden');
+      this.$copied.classList.add('hidden');
+    });
   }
 
 }
