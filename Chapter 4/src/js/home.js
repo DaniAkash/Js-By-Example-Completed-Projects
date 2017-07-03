@@ -64,7 +64,13 @@ class Home {
       this.$copy.classList.remove('hidden');
     });
 
-    this.$buttonArea.addEventListener('mouseout', (event) => {
+    this.$buttonArea.addEventListener('mouseout', event => {
+      const e = event.toElement || event.relatedTarget;
+      if(e) {
+        if (e.parentNode == this.$buttonArea || e == this.$buttonArea) {
+          return;
+        }
+      }
       this.$copy.classList.add('hidden');
       this.$copied.classList.add('hidden');
     });
