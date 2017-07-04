@@ -102,10 +102,17 @@ class Home {
     });
   }
 
+  set room(room) {
+    webrtc.joinRoom(room);
+    this.roomName = room;
+    this.roomCreated();
+  }
+
 }
 
 const home = new Home();
 
 webrtc.on('readyToCall', () => {
   const room = location.search && location.search.split('?')[1];
+  if(room) home.room = room;
 });
