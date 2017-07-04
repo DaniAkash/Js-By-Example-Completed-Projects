@@ -59,6 +59,12 @@ class Home {
       this.copyUrl();
     };
 
+    this.$localVideo.onclick = () => {
+      this.clearSelected();
+      this.$localVideo.parentElement.classList.add('container-selected');
+      this.$localVideo.classList.add('video-selected');
+    };
+
   }
 
   copyUrl() {
@@ -122,12 +128,26 @@ class Home {
     $container.appendChild($video);
 
     this.$remotes.appendChild($container);
+
+    $video.onclick = () => {
+      this.clearSelected();
+      $container.classList.add('container-selected');
+      $video.classList.add('video-selected');
+    };
   }
 
   removeRemoteVideo(peer) {
     const $removedVideo = document.getElementById(peer ? 'container_' + webrtc.getDomId(peer) : 'no-video-found');
     if ($removedVideo) {
       this.$remotes.removeChild($removedVideo);
+    }
+  }
+
+  clearSelected() {
+    let $selectedVideo = document.querySelector('.video-selected');
+    if($selectedVideo) {
+      $selectedVideo.classList.remove('video-selected');
+      $selectedVideo.parentElement.classList.remove('container-selected');
     }
   }
 
