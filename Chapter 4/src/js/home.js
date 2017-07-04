@@ -112,6 +112,18 @@ class Home {
     return this.roomName;
   }
 
+  addRemoteVideo($video, peer) {
+    const $container = document.createElement('div');
+    $container.className = 'video-container';
+    $container.id = 'container_' + webrtc.getDomId(peer);
+
+    $video.className = 'video-player';
+
+    $container.appendChild($video);
+
+    this.$remotes.appendChild($container);
+  }
+
 }
 
 const home = new Home();
@@ -121,3 +133,5 @@ webrtc.on('readyToCall', () => {
   if(room) home.room = room;
   // console.log(home.room);
 });
+
+webrtc.on('videoAdded', ($video, peer) => home.addRemoteVideo($video, peer));
