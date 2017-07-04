@@ -108,6 +108,10 @@ class Home {
     this.roomCreated();
   }
 
+  get room() {
+    return this.roomName;
+  }
+
 }
 
 const home = new Home();
@@ -115,4 +119,5 @@ const home = new Home();
 webrtc.on('readyToCall', () => {
   const room = location.search && location.search.split('?')[1];
   if(room) home.room = room;
+  // console.log(home.room);
 });
