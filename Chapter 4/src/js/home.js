@@ -106,8 +106,5 @@ class Home {
 const home = new Home();
 
 webrtc.on('readyToCall', () => {
-  if(location.search) {
-    const locationArray = location.search.split('?');
-    const room = locationArray[1];
-  }
+  const room = location.search && location.search.split('?')[1];
 });
