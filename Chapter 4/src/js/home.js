@@ -42,7 +42,8 @@ class Home {
           if(!err) {
             const newUrl = location.pathname + '?' + name;
             history.replaceState({}, '', newUrl);
-            this.roomCreated(name);
+            this.roomName = name;
+            this.roomCreated();
           } else {
             console.error(err);
           }
@@ -77,10 +78,10 @@ class Home {
     window.getSelection().removeAllRanges();
   }
 
-  roomCreated(room) {
+  roomCreated() {
     this.$infoSection.classList.remove('hidden');
     this.$createRoomSection.classList.add('hidden');
-    this.$roomName.textContent = `Room Name: ${room}`;
+    this.$roomName.textContent = `Room Name: ${this.roomName}`;
     this.$roomUrl.textContent = window.location.href;
   }
 
