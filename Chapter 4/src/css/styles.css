@@ -38,3 +38,18 @@ body {
   max-width: 25vh;
   margin: 20px;
 }
+@media only screen and (max-width: 736px) {
+  .video-selected {
+    max-height: 70vw;
+    max-width: 70vw;
+  }
+}
+@media only screen and (min-width: 736px) {
+  .video-selected {
+    max-height: 50vh;
+    max-width: 50vh;
+  }
+  .container-selected {
+    order: -1;
+  }
+}
