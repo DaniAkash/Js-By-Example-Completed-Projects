@@ -124,6 +124,13 @@ class Home {
     this.$remotes.appendChild($container);
   }
 
+  removeRemoteVideo(peer) {
+    const $removedVideo = document.getElementById(peer ? 'container_' + webrtc.getDomId(peer) : 'no-video-found');
+    if ($removedVideo) {
+      this.$remotes.removeChild($removedVideo);
+    }
+  }
+
 }
 
 const home = new Home();
@@ -135,3 +142,5 @@ webrtc.on('readyToCall', () => {
 });
 
 webrtc.on('videoAdded', ($video, peer) => home.addRemoteVideo($video, peer));
+
+webrtc.on('videoRemoved', ($video, peer) => home.removeRemoteVideo(peer));
