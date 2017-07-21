@@ -1,4 +1,4 @@
-export default class Weather extends HTMLElement {
+class Weather extends HTMLElement {
   constructor() {
     super();
 
@@ -63,3 +63,5 @@ export default class Weather extends HTMLElement {
   }
 
 }
+
+export default Weather;
