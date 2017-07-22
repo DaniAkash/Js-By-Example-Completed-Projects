@@ -4,7 +4,8 @@ class Weather extends HTMLElement {
 
     this.latitude = this.getAttribute('lat');
     this.longitude = this.getAttribute('long');
-    this.innerHTML = `
+    this.$shadowRoot = this.attachShadow({mode: 'open'});
+    this.$shadowRoot.innerHTML = `
       <style>
       .weather-container {
         height: 100%;
