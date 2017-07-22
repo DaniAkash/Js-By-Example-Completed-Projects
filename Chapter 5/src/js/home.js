@@ -1,6 +1,9 @@
 import '../css/styles.css';
 
+import Weather from './CustomElements/Weather/Weather';
+
 window.addEventListener('load', () => {
+  customElements.define('x-weather', Weather);
   getLocation();
 });
 
