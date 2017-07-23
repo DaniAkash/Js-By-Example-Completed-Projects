@@ -64,14 +64,33 @@ class Weather extends HTMLElement {
     `;
   }
 
-  connectedCallBack() {
-    this.latitude = this.getAttribute('lat');
-    this.longitude = this.getAttribute('long');
+  connectedCallback() {
+    this.latitude = this.getAttribute('latitude');
+    this.longitude = this.getAttribute('longitude');
 
     this.$icon = this.$shadowRoot.querySelector('#dayIcon');
     this.$city = this.$shadowRoot.querySelector('#city');
     this.$temperature = this.$shadowRoot.querySelector('#temperature');
     this.$summary = this.$shadowRoot.querySelector('#summary');
+
+    this.setWeather();
+  }
+
+  setWeather() {
+    if(this.latitude && this.longitude) {
+      apiCall(`getWeather/${this.latitude},${this.longitude}`, {}, 'GET')
+        .then(response => {
+
+          this.$city.textContent = response.city;
+          this.$temperature.textContent = `${response.currently.temperature}° F`;
+          this.$summary.textContent = response.currently.summary;
+
+          let skycons = new Skycons({"color": "black"});
+          skycons.add(this.$icon, Skycons[response.currently.icon.toUpperCase().replace('-','_')]);
+          skycons.play();
+        })
+        .catch(console.error);
+    }
   }
 
 }
