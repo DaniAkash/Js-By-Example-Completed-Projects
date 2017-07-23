@@ -74,6 +74,12 @@ class Weather extends HTMLElement {
     this.$summary = this.$shadowRoot.querySelector('#summary');
 
     this.setWeather();
+
+    this.ticker = setInterval(this.displayTime.bind(this), 1000);
+  }
+
+  disconnectedCallback() {
+    clearInterval(this.ticker);
   }
 
   setWeather() {
