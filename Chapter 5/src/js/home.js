@@ -19,8 +19,22 @@ function showPosition(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
 
-  console.log(latitude);
-  console.log(longitude);
+  function createWeatherElement(className) {
+    const $weather = document.createElement('x-weather');
+    $weather.setAttribute('latitude', latitude);
+    $weather.setAttribute('longitude', longitude);
+    $weather.setAttribute('class', className);
+
+    return $weather;
+  };
+
+  const $largeContainer = document.querySelector('.large-container');
+  const $mediumContainer = document.querySelector('.medium-container');
+  const $smallContainer = document.querySelector('.small-container');
+
+  $largeContainer.appendChild(createWeatherElement('large'));
+  $mediumContainer.appendChild(createWeatherElement('medium'));
+  $smallContainer.appendChild(createWeatherElement('small'));
 }
 
 function errorPosition(error) {
