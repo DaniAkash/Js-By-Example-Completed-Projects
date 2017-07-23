@@ -106,6 +106,18 @@ class Weather extends HTMLElement {
     $time.textContent = displayTime;
   }
 
+  static get observedAttributes() { return ['latitude', 'longitude']; }
+
+  attributeChangedCallback(attr, oldValue, newValue) {
+    if (attr === 'latitude' && oldValue !== newValue) {
+      this.latitude = newValue;
+      this.setWeather();
+    }
+    if(attr === 'longitude' && oldValue !== newValue) {
+      this.longitude = newValue;
+      this.setWeather();
+    }
+  }
 }
 
 export default Weather;
