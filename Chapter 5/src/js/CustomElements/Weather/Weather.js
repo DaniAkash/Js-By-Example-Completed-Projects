@@ -1,3 +1,6 @@
+import apiCall from './services/api/apiCall';
+import './lib/skycons';
+
 class Weather extends HTMLElement {
   constructor() {
     super();
