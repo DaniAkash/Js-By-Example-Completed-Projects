@@ -85,7 +85,7 @@ class Weather extends HTMLElement {
           this.$temperature.textContent = `${response.currently.temperature}° F`;
           this.$summary.textContent = response.currently.summary;
 
-          let skycons = new Skycons({"color": "black"});
+          const skycons = new Skycons({"color": "black"});
           skycons.add(this.$icon, Skycons[response.currently.icon.toUpperCase().replace('-','_')]);
           skycons.play();
         })
