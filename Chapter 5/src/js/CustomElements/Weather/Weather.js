@@ -118,6 +118,24 @@ class Weather extends HTMLElement {
       this.setWeather();
     }
   }
+
+  get longitude() {
+    return this.longitude;
+  }
+
+  set longitude(long) {
+    this.longitude = long;
+    this.setWeather();
+  }
+
+  get latitude() {
+    return this.latitude;
+  }
+
+  set latitude(lat) {
+    this.latitude = lat;
+    this.setWeather();
+  }
 }
 
 export default Weather;
