@@ -5,8 +5,6 @@ class Weather extends HTMLElement {
   constructor() {
     super();
 
-    this.latitude = this.getAttribute('lat');
-    this.longitude = this.getAttribute('long');
     this.$shadowRoot = this.attachShadow({mode: 'open'});
     this.$shadowRoot.innerHTML = `
       <style>
@@ -64,6 +62,11 @@ class Weather extends HTMLElement {
         </div>
       </div>
     `;
+  }
+
+  connectedCallBack() {
+    this.latitude = this.getAttribute('lat');
+    this.longitude = this.getAttribute('long');
   }
 
 }
