@@ -67,6 +67,11 @@ class Weather extends HTMLElement {
   connectedCallBack() {
     this.latitude = this.getAttribute('lat');
     this.longitude = this.getAttribute('long');
+
+    this.$icon = this.$shadowRoot.querySelector('#dayIcon');
+    this.$city = this.$shadowRoot.querySelector('#city');
+    this.$temperature = this.$shadowRoot.querySelector('#temperature');
+    this.$summary = this.$shadowRoot.querySelector('#summary');
   }
 
 }
