@@ -93,6 +93,13 @@ class Weather extends HTMLElement {
     }
   }
 
+  displayTime() {
+    const date = new Date();
+    const displayTime = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    const $time = this.$shadowRoot.querySelector('#time');
+    $time.textContent = displayTime;
+  }
+
 }
 
 export default Weather;
