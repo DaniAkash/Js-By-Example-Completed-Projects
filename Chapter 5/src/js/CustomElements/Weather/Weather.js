@@ -119,20 +119,20 @@ class Weather extends HTMLElement {
     }
   }
 
-  get longitude() {
+  get long() {
     return this.longitude;
   }
 
-  set longitude(long) {
+  set long(long) {
     this.longitude = long;
     this.setWeather();
   }
 
-  get latitude() {
+  get lat() {
     return this.latitude;
   }
 
-  set latitude(lat) {
+  set lat(lat) {
     this.latitude = lat;
     this.setWeather();
   }

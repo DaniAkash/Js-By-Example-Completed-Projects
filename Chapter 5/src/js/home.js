@@ -34,7 +34,17 @@ function showPosition(position) {
 
   $largeContainer.appendChild(createWeatherElement('large'));
   $mediumContainer.appendChild(createWeatherElement('medium'));
-  $smallContainer.appendChild(createWeatherElement('small'));
+  // $smallContainer.appendChild(createWeatherElement('small'));
+
+  const $small = createWeatherElement('small');
+  $smallContainer.appendChild($small);
+
+  setTimeout(() => {
+    console.log($small.lat, $small.long);
+    $small.lat = 51.5074;
+    $small.long = 0.1278;
+    console.log($small.lat, $small.long);
+  }, 10000);
 }
 
 function errorPosition(error) {
