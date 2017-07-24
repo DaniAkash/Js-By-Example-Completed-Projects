@@ -2,7 +2,9 @@ import '../css/styles.css';
 
 import Weather from './CustomElements/Weather/Weather';
 
-window.addEventListener('load', () => {
+import 'webcomponents.js';
+
+window.addEventListener('WebComponentsReady', () => {
   customElements.define('x-weather', Weather);
   getLocation();
 });
