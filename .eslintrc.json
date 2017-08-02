@@ -20,8 +20,11 @@
     "no-unused-vars": "warn",
     "constructor-super": "warn",
     "valid-typeof": "warn",
-    "semi": "warn"
+    "semi": "warn",
+    "react/jsx-uses-vars": "error",
+    "react/react-in-jsx-scope": "error"
   },
   "plugins": [
+    "react"
   ]
 }
