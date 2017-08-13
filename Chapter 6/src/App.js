@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import PropTypes from 'prop-types';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
+import { NavLink, Route, withRouter } from 'react-router-dom';
+
 import './App.css';
+import routes from './routes';
+import Home from './Components/Home/Home';
+import Post from './Components/Post/Post';
+import AuthorList from './Components/Author/AuthorList';
+import AuthorPosts from './Components/Author/AuthorPosts';
+import NewPost from './Components/NewPost/NewPost';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>{`The app goes here...`}</h1>
       </div>
     );
   }
