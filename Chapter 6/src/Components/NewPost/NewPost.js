@@ -15,7 +15,7 @@ class NewPost extends Component {
 
     return(
       <div className={'container'}>
-
+        <h1>{`New Post page`}</h1>
       </div>
     );
   }

@@ -10,7 +10,7 @@ class Post extends Component {
   render() {
     return(
       <div className={`post-container container`}>
-
+        <h1>{`Post Details`}</h1>
       </div>
     );
   }

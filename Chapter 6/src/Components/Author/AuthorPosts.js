@@ -12,7 +12,7 @@ class AuthorPosts extends Component {
   render() {
     return(
       <div className={`container`}>
-
+        <h1>{`Author's Posts`}</h1>
       </div>
     );
   }
