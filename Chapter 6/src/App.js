@@ -33,9 +33,9 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar color="faded" light toggleable>
-          <NavbarToggler right onClick={()=>{}} />
+          <NavbarToggler right onClick={this.toggle} />
           <a className="navbar-brand" href="home">Home</a>
-          <Collapse isOpen={false} navbar>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <a className="nav-link" href="home">Home</a>
