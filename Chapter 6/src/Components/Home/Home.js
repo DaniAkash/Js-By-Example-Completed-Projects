@@ -7,6 +7,16 @@ import LoadingIndicator from '../Common/LoadingIndicator';
 
 class Home extends Component {
 
+  constructor() {
+    super();
+
+    this.state = {
+      posts: [],
+      loading: false,
+      hasError: false,
+    };
+  }
+
   render () {
     return (
       <div className={`posts-container container`}>
