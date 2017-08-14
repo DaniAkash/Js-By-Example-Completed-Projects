@@ -24,6 +24,19 @@ class Post extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({loading: true});
+    const postId = this.props.match.params.id;
+    apiCall(`post/${postId}`, {}, 'GET')
+    .then(post => {
+      this.setState({post, loading: false});
+    })
+    .catch(error => {
+      this.setState({hasError: true, loading: false});
+      console.error(error);
+    });
+  }
+
   render() {
     return(
       <div className={`post-container container`}>
