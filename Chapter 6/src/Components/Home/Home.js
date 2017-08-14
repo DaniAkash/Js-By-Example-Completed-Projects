@@ -17,6 +17,18 @@ class Home extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({loading: true});
+    apiCall('posts', {}, 'GET')
+    .then(posts => {
+      this.setState({posts, loading: false});
+    })
+    .catch(error => {
+      this.setState({hasError: true, loading: false});
+      console.error(error);
+    });
+  }
+
   render () {
     return (
       <div className={`posts-container container`}>
