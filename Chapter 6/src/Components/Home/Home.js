@@ -32,7 +32,23 @@ class Home extends Component {
   render () {
     return (
       <div className={`posts-container container`}>
-        <h1>{`Home`}</h1>
+        {
+          this.state.loading
+          ?
+            <LoadingIndicator />
+          :
+            null
+        }
+        {
+          this.state.hasError
+          ?
+            <ErrorMessage title={'Error!'} message={'Unable to retrieve posts!'} />
+          :
+            null
+        }
+        {
+          this.state.posts.map(post => <PostSummary key={post.id} post={post}>Post</PostSummary>)
+        }
       </div>
     );
   }
