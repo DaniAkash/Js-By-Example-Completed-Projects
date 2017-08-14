@@ -40,17 +40,17 @@ class App extends Component {
       <div className="App">
         <Navbar color="faded" light toggleable>
           <NavbarToggler right onClick={this.toggle} />
-          <a className="navbar-brand" href="home">Home</a>
+          <NavLink className="navbar-brand" to={routes.home}>Blog</NavLink>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <a className="nav-link" href="home">Home</a>
+                <NavLink className="nav-link" activeClassName="active" to={routes.home}>Home</NavLink>
               </NavItem>
               <NavItem>
-                <a className="nav-link" href="authors">Authors</a>
+                <NavLink className="nav-link" activeClassName="active" to={routes.authors}>Authors</NavLink>
               </NavItem>
               <NavItem>
-                <a className="nav-link" href="new-post">New Post</a>
+                <NavLink className="nav-link" activeClassName="active" to={routes.newPost}>New Post</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
