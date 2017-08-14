@@ -14,6 +14,16 @@ class Post extends Component {
     match: PropTypes.object.isRequired,
   }
 
+  constructor() {
+    super();
+
+    this.state = {
+      post: {},
+      loading: false,
+      hasError: false,
+    };
+  }
+
   render() {
     return(
       <div className={`post-container container`}>
