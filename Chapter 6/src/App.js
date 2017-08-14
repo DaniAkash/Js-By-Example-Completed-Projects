@@ -17,7 +17,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>{`The app goes here...`}</h1>
+        <Navbar color="faded" light toggleable>
+          <NavbarToggler right onClick={()=>{}} />
+          <a className="navbar-brand" href="home">Home</a>
+          <Collapse isOpen={false} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <a className="nav-link" href="home">Home</a>
+              </NavItem>
+              <NavItem>
+                <a className="nav-link" href="authors">Authors</a>
+              </NavItem>
+              <NavItem>
+                <a className="nav-link" href="new-post">New Post</a>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </div>
     );
   }
