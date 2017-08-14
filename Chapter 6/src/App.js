@@ -29,6 +29,12 @@ class App extends Component {
     });
   }
 
+  componentWillMount() {
+    if(this.props.location.pathname === '/') {
+      this.props.history.push(routes.home);
+    }
+  }
+
   render() {
     return (
       <div className="App">
