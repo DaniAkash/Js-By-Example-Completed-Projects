@@ -14,6 +14,12 @@ import NewPost from './Components/NewPost/NewPost';
 
 class App extends Component {
 
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
+  }
+
   constructor(props) {
     super(props);
 
