@@ -31,7 +31,7 @@ class App extends Component {
 
   componentWillMount() {
     if(this.props.location.pathname === '/') {
-      this.props.history.push(routes.home);
+      this.props.history.replace(routes.home);
     }
   }
 
