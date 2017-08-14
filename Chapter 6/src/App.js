@@ -49,6 +49,12 @@ class App extends Component {
             </Nav>
           </Collapse>
         </Navbar>
+
+        <Route exact path={routes.home} component={Home} />
+        <Route exact path={routes.post} component={Post} />
+        <Route exact path={routes.authors} component={AuthorList} />
+        <Route exact path={routes.author} component={AuthorPosts} />
+        <Route exact path={routes.newPost} component={NewPost} />
       </div>
     );
   }
