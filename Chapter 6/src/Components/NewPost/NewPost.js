@@ -25,6 +25,19 @@ class NewPost extends Component {
     };
   }
 
+  editAuthorName(event) {
+    this.setState({author: event.target.value});
+  }
+
+  editContent(event) {
+    const linesArray = event.target.value.split('\n');
+    this.setState({content: event.target.value, noOfLines: linesArray.length});
+  }
+
+  editTitle(event) {
+    this.setState({title: event.target.value});
+  }
+
   render() {
 
     const noOfLines = this.state.noOfLines < 5 ? 5 : this.state.noOfLines;
