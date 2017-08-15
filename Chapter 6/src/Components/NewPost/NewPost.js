@@ -11,6 +11,20 @@ import PostInputField from './Components/PostInputField';
 
 class NewPost extends Component {
 
+  constructor() {
+    super();
+
+    this.state = {
+      author: '',
+      title: '',
+      content: '',
+      noOfLines: 0,
+      loading: false,
+      success: false,
+      hasError: false,
+    };
+  }
+
   render() {
 
     return(
