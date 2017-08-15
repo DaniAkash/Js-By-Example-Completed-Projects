@@ -26,6 +26,42 @@ class NewPost extends Component {
     this.editAuthorName = this.editAuthorName.bind(this);
     this.editContent = this.editContent.bind(this);
     this.editTitle = this.editTitle.bind(this);
+    this.submit = this.submit.bind(this);
+  }
+
+  submit() {
+    if(this.state.author && this.state.content && this.state.title) {
+      this.setState({loading: true});
+
+      const date = new Date();
+      const epoch = (date.getTime()/1000).toFixed(0).toString();
+      const body = {
+        id: uuidv4(),
+        author: this.state.author,
+        title: this.state.title,
+        content: this.state.content,
+        datetime: epoch,
+      };
+
+      apiCall(`post`, body)
+      .then(() => {
+        this.setState({
+          author: '',
+          title: '',
+          content: '',
+          noOfLines: 0,
+          loading: false,
+          success: true,
+        });
+      })
+      .catch(error => {
+        this.setState({hasError: true, loading: false});
+        console.error(error);
+      });
+
+    } else {
+      alert('Please Fill in all the fields');
+    }
   }
 
   editAuthorName(event) {
