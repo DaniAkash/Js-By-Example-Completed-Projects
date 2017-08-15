@@ -27,9 +27,57 @@ class NewPost extends Component {
 
   render() {
 
+    const noOfLines = this.state.noOfLines < 5 ? 5 : this.state.noOfLines;
+
     return(
       <div className={'container'}>
-        <h1>{`New Post page`}</h1>
+        <h2>Write Post</h2>
+
+        <PostInputField
+          className={'author-name-input'}
+          id={'author'}
+          title={'Author Name:'}
+          value={this.state.author}
+          onChange={this.editAuthorName}
+        />
+
+        <PostInputField
+          className={'title-input'}
+          id={'title'}
+          title={'Title:'}
+          value={this.state.title}
+          onChange={this.editTitle}
+        />
+
+        <div className="form-group content-text-area">
+          <label htmlFor="content">Post:</label>
+          <textarea className="form-control" rows={noOfLines} id="content" value={this.state.content} onChange={this.editContent}></textarea>
+        </div>
+
+        {
+          this.state.loading
+          ?
+            <LoadingIndicator />
+          :
+            <button type="button" className="btn btn-primary" onClick={this.submit}>Submit Post</button>
+        }
+
+        {
+          this.state.hasError
+          ?
+            <ErrorMessage title={'Error!'} message={`Unable to submit post!`} />
+          :
+            null
+        }
+
+        {
+          this.state.success
+          ?
+            <SuccessMessage title={'Success!'} message={`Post has been Submitted!`} />
+          :
+            null
+        }
+
       </div>
     );
   }
