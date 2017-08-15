@@ -40,7 +40,23 @@ class Post extends Component {
   render() {
     return(
       <div className={`post-container container`}>
-        <h1>{`Post Details`}</h1>
+        {
+          this.state.loading
+          ?
+            <LoadingIndicator />
+          :
+            null
+        }
+        {
+          this.state.hasError
+          ?
+            <ErrorMessage title={'Error!'} message={`Unable to retrieve post!`} />
+          :
+            null
+        }
+        <h2>{this.state.post.title}</h2>
+        <p>{this.state.post.author}</p>
+        <p>{this.state.post.content}</p>
       </div>
     );
   }
