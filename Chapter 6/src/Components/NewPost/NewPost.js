@@ -23,6 +23,9 @@ class NewPost extends Component {
       success: false,
       hasError: false,
     };
+    this.editAuthorName = this.editAuthorName.bind(this);
+    this.editContent = this.editContent.bind(this);
+    this.editTitle = this.editTitle.bind(this);
   }
 
   editAuthorName(event) {
