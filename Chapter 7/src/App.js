@@ -33,6 +33,7 @@ class App extends Component {
     history: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
+    postActions: PropTypes.object.isRequired,
   }
 
   constructor(props) {
@@ -51,6 +52,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+    this.props.postActions.getAllPosts();
     if(this.props.location.pathname === '/') {
       this.props.history.replace(routes.home);
     }
