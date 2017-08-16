@@ -12,6 +12,8 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import configureStore from './redux/store/configureStore';
 
+const store = configureStore();
+
 ReactDOM.render(
   <Router>
     <App />
