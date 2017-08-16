@@ -66,3 +66,21 @@ export const addNewPost = (body) => {
     });
   };
 };
+
+export const addPostApiCallStart = () => {
+  return {
+    type: actions.ADD_POST_AJAX_CALL_START
+  };
+};
+
+export const addPostApiCallSuccess = () => {
+  return {
+    type: actions.ADD_POST_AJAX_CALL_SUCCESS
+  };
+};
+
+export const addPostApiCallFailure = () => {
+  return {
+    type: actions.ADD_POST_AJAX_CALL_FAILURE
+  };
+};
