@@ -12,6 +12,21 @@ import AuthorList from './Components/Author/AuthorList';
 import AuthorPosts from './Components/Author/AuthorPosts';
 import NewPost from './Components/NewPost/NewPost';
 
+/**
+ * Redux Actions
+ */
+import * as postActions from './redux/actions/postActions';
+
+/**
+ * React-Redux connect function
+ */
+import { connect } from 'react-redux';
+
+/**
+ * Redux bindActionCreators function
+ */
+import { bindActionCreators } from 'redux';
+
 class App extends Component {
 
   static propTypes = {
@@ -72,4 +87,21 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+function mapStateToProps() {
+  return {
+
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    postActions: bindActionCreators(postActions, dispatch),
+  };
+}
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);
