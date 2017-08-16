@@ -46,3 +46,23 @@ export const getPosts = (posts) => {
     payload: { posts },
   };
 };
+
+export const addNewPost = (body) => {
+  return dispatch => {
+
+    dispatch(addPostApiCallStart());
+
+    apiCall(`post`, body)
+    .then(() => {
+
+      dispatch(addPostApiCallSuccess());
+      dispatch(getAllPosts());
+
+    })
+    .catch(error => {
+
+      dispatch(addPostApiCallFailure());
+
+    });
+  };
+};
