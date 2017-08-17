@@ -56,4 +56,12 @@ class Home extends Component {
   }
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    posts: state.posts,
+    loading: state.ajaxCalls.getAllPosts.loading,
+    hasError: state.ajaxCalls.getAllPosts.hasError,
+  };
+}
+
+export default connect(mapStateToProps)(Home);
