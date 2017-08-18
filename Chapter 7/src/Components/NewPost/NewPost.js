@@ -9,6 +9,10 @@ import SuccessMessage from '../Common/SuccessMessage';
 import LoadingIndicator from '../Common/LoadingIndicator';
 import PostInputField from './Components/PostInputField';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as postActions from '../../redux/actions/postActions';
+
 class NewPost extends Component {
 
   constructor() {
@@ -135,4 +139,19 @@ class NewPost extends Component {
   }
 }
 
-export default NewPost;
+function mapStateToProps(state) {
+  return {
+    loading: state.ajaxCalls.addPost.loading,
+    hasError: state.ajaxCalls.addPost.hasError,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    postActions: bindActionCreators(postActions, dispatch),
+  };
+}
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(NewPost);
