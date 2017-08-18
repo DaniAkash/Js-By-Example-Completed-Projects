@@ -15,51 +15,39 @@ class Post extends Component {
     history: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
-  }
-
-  constructor() {
-    super();
-
-    this.state = {
-      post: {},
-      loading: false,
-      hasError: false,
-    };
-  }
-
-  componentWillMount() {
-    this.setState({loading: true});
-    const postId = this.props.match.params.id;
-    apiCall(`post/${postId}`, {}, 'GET')
-    .then(post => {
-      this.setState({post, loading: false});
-    })
-    .catch(error => {
-      this.setState({hasError: true, loading: false});
-      console.error(error);
-    });
+    post: PropTypes.object,
+    loading: PropTypes.bool.isRequired,
+    hasError: PropTypes.bool.isRequired,
   }
 
   render() {
     return(
       <div className={`post-container container`}>
         {
-          this.state.loading
+          this.props.loading
           ?
             <LoadingIndicator />
           :
             null
         }
         {
-          this.state.hasError
+          this.props.hasError
           ?
             <ErrorMessage title={'Error!'} message={`Unable to retrieve post!`} />
           :
             null
         }
-        <h2>{this.state.post.title}</h2>
-        <p>{this.state.post.author}</p>
-        <p>{this.state.post.content}</p>
+        {
+          this.props.post
+          ?
+            <div>
+              <h2>{this.props.post.title}</h2>
+              <p>{this.props.post.author}</p>
+              <p>{this.props.post.content}</p>
+            </div>
+          :
+            null
+        }
       </div>
     );
   }
