@@ -6,6 +6,9 @@ import ErrorMessage from '../Common/ErrorMessage';
 import apiCall from '../../services/api/apiCall';
 import LoadingIndicator from '../Common/LoadingIndicator';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 class Post extends Component {
 
   static propTypes = {
