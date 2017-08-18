@@ -65,4 +65,15 @@ class Post extends Component {
   }
 }
 
-export default withRouter(Post);
+function mapStateToProps(state, ownProps) {
+
+  return {
+    post: state.posts.find(post => post.id === ownProps.match.params.id),
+    loading: state.ajaxCalls.getAllPosts.loading,
+    hasError: state.ajaxCalls.getAllPosts.hasError,
+  };
+}
+
+export default withRouter(
+  connect(mapStateToProps)(Post)
+);
