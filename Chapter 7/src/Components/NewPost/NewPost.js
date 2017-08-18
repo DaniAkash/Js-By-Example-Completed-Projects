@@ -15,6 +15,12 @@ import * as postActions from '../../redux/actions/postActions';
 
 class NewPost extends Component {
 
+  static propTypes = {
+    postActions: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
+    hasError: PropTypes.bool.isRequired,
+  }
+
   constructor() {
     super();
 
@@ -23,9 +29,7 @@ class NewPost extends Component {
       title: '',
       content: '',
       noOfLines: 0,
-      loading: false,
       success: false,
-      hasError: false,
     };
     this.editAuthorName = this.editAuthorName.bind(this);
     this.editContent = this.editContent.bind(this);
@@ -111,7 +115,7 @@ class NewPost extends Component {
         </div>
 
         {
-          this.state.loading
+          this.props.loading
           ?
             <LoadingIndicator />
           :
@@ -119,7 +123,7 @@ class NewPost extends Component {
         }
 
         {
-          this.state.hasError
+          this.props.hasError
           ?
             <ErrorMessage title={'Error!'} message={`Unable to submit post!`} />
           :
@@ -152,6 +156,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(NewPost);
