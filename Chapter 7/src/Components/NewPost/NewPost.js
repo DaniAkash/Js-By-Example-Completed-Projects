@@ -51,21 +51,7 @@ class NewPost extends Component {
         datetime: epoch,
       };
 
-      apiCall(`post`, body)
-      .then(() => {
-        this.setState({
-          author: '',
-          title: '',
-          content: '',
-          noOfLines: 0,
-          loading: false,
-          success: true,
-        });
-      })
-      .catch(error => {
-        this.setState({hasError: true, loading: false});
-        console.error(error);
-      });
+      this.props.postActions.addNewPost(body);
 
     } else {
       alert('Please Fill in all the fields');
@@ -83,6 +69,21 @@ class NewPost extends Component {
 
   editTitle(event) {
     this.setState({title: event.target.value});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props !== nextProps) {
+      if(nextProps.loading === false && nextProps.hasError === false) {
+        this.setState({
+          success: true,
+          author: '',
+          title: '',
+          content: '',
+        });
+      } else if(nextProps.loading === false && nextProps.hasError === true) {
+        this.setState({success: false});
+      }
+    }
   }
 
   render() {
