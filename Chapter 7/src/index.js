@@ -12,7 +12,21 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import configureStore from './redux/store/configureStore';
 
+/**
+ * imports for redux persist
+ */
+import { persistStore } from 'redux-persist';
+import localForage from 'localforage';
+
+/**
+ * Create Redux Store
+ */
 const store = configureStore();
+
+/**
+ * Persist the store
+ */
+persistStore(store, {storage: localForage});
 
 ReactDOM.render(
   <Provider store={store}>
