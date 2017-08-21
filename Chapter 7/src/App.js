@@ -16,6 +16,7 @@ import NewPost from './Components/NewPost/NewPost';
  * Redux Actions
  */
 import * as postActions from './redux/actions/postActions';
+import * as authorActions from './redux/actions/authorActions';
 
 /**
  * React-Redux connect function
@@ -53,6 +54,7 @@ class App extends Component {
 
   componentWillMount() {
     this.props.postActions.getAllPosts();
+    this.props.authorActions.getAllAuthors();
     if(this.props.location.pathname === '/') {
       this.props.history.replace(routes.home);
     }
@@ -98,6 +100,7 @@ function mapStateToProps() {
 function mapDispatchToProps(dispatch) {
   return {
     postActions: bindActionCreators(postActions, dispatch),
+    authorActions: bindActionCreators(authorActions, dispatch),
   };
 }
 
